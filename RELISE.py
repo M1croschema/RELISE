@@ -95,6 +95,9 @@ display.set_caption("PvZ")
 window = display.set_mode((win_width, win_height))
 background = transform.scale(image.load(img_back), (win_width, win_height))
 
+ship = Player(img_hero, 5, win_height - 100, 80, 100, 10)
+
+
 bullets = sprite.Group()
 
 finish = False
@@ -107,9 +110,7 @@ num_fire = 0
 
 while run:
 
-    if not finish:
-        # оновлюємо фон
-        window.blit(background, (0, 0))
+    
     
     # подія натискання на кнопку Закрити
     for e in event.get():
@@ -127,6 +128,19 @@ while run:
                 if num_fire >= 5 and rel_time == False : #якщо гравець зробив 5 пострілів
                     last_time = timer() #засікаємо час, коли це сталося
                     rel_time = True #ставимо прапор перезарядки
+    if not finish:
+        # оновлюємо фон
+        window.blit(background, (0, 0))
 
+    ship.update()
+    monsters.update()
+    bullets.update()
+
+    ship.reset()
+    monsters.draw(window)
+    bullets.draw(window)
+ 
+
+    
 
     time.delay(50)
