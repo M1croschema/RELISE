@@ -14,7 +14,7 @@ mixer.music.play()
 img_back = "fon.png"
 img_hero = "Hero.webp" 
 #img_bullet = "bullet.png" 
-#img_enemy = "ufo.png"  
+img_enemy = "ufo.png"  
 
 score = 0  
 goal = 10 
@@ -95,11 +95,22 @@ display.set_caption("PvZ")
 window = display.set_mode((win_width, win_height))
 background = transform.scale(image.load(img_back), (win_width, win_height))
 
+bullets = sprite.Group()
+
 finish = False
 # Основний цикл гри:
 run = True 
 
+rel_time = False  # прапор, що відповідає за перезаряджання
+
+num_fire = 0
+
 while run:
+
+    if not finish:
+        # оновлюємо фон
+        window.blit(background, (0, 0))
+    
     # подія натискання на кнопку Закрити
     for e in event.get():
         if e.type == QUIT:
@@ -117,10 +128,5 @@ while run:
                     last_time = timer() #засікаємо час, коли це сталося
                     rel_time = True #ставимо прапор перезарядки
 
-
-    # сама гра: дії спрайтів, перевірка правил гри, перемальовка
-    if not finish:
-        # оновлюємо фон
-        window.blit(background, (0, 0))
 
     time.delay(50)
