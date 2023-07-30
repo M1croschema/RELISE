@@ -12,7 +12,7 @@ mixer.music.load('music.mp3')
 mixer.music.play()
 
 img_back = "fon.png"
-img_hero = "Hero.png" 
+img_hero = "Hero.webp" 
 #img_bullet = "bullet.png" 
 #img_enemy = "ufo.png"  
 
