@@ -12,8 +12,8 @@ mixer.music.load('music.mp3')
 mixer.music.play()
 
 img_back = "fon.png"
-img_hero = "Hero.webp" 
-#img_bullet = "bullet.png" 
+img_hero = "Hero.png" 
+img_bullet = "bullet.png" 
 img_enemy = "ufo.png"  
 
 score = 0  
@@ -89,13 +89,13 @@ class Bullet(GameSprite):
             self.kill()
 
 
-win_width = 700
-win_height = 500
+win_width = 900
+win_height = 700
 display.set_caption("PvZ")
 window = display.set_mode((win_width, win_height))
 background = transform.scale(image.load(img_back), (win_width, win_height))
 
-ship = Player(img_hero, 5, win_height - 100, 80, 100, 10)
+ship = Player(img_hero, 275, win_height - 200, 80, 100, 10)
 
 
 bullets = sprite.Group()
@@ -133,12 +133,12 @@ while run:
         window.blit(background, (0, 0))
 
     ship.update()
-    monsters.update()
-    bullets.update()
+    #monsters.update()
+    #bullets.update()
 
     ship.reset()
-    monsters.draw(window)
-    bullets.draw(window)
+    #monsters.draw(window)
+    #bullets.draw(window)
  
 
     
